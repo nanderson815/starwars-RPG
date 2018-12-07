@@ -1,33 +1,47 @@
 $(document).ready(function () {
 
-    var fighters = [
-        Boba = {
+    var fighters = {
+        Boba: {
             name: "Boba Fett",
+            img: "assets/images/bulba-fet-icon.png",
             healthPoints: "150",
             attackPower: "11",
             counterAttackPower: "12"
         },
-        Darth = {
+        Darth: {
             name: "Darth Vader",
+            img: "assets/images/Darth-Vader-icon.png",
             healthPoints: "200",
             attackPower: "12",
             counterAttackPower: "15"
         },
-        R2D2 = {
+        R2D2: {
             name: "R2-D2",
+            img: "assets/images/R2-D2-icon.png",
             healthPoints: "125",
             attackPower: "10",
             counterAttackPower: "17"
         },
-        clone = {
+        Clone: {
             name: "Clone Soldier",
+            img: "assets/images/clone-icon.png",
             healthPoints: "150",
             attackPower: "15",
             counterAttackPower: "13"
         }
-    ]
+    }
 
-    console.log(fighters[0]);
+
+    var theFighters = Object.keys(fighters);
+    console.log(theFighters);
+
+    for (i=0; i < theFighters.length; i++){
+        var fighterCard = $("<img>");
+        fighterCard.attr("src", fighters[Object.keys(fighters)[i]].img);
+
+        // fighterCard.append(fighters[Object.keys(fighters)[i]].img);
+        $(".fighterOptions").append(fighterCard);
+    }
 
 
 
