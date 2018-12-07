@@ -36,8 +36,11 @@ $(document).ready(function () {
     console.log(theFighters);
 
     for (i=0; i < theFighters.length; i++){
-        var fighterCard = $("<img>");
-        fighterCard.attr("src", fighters[Object.keys(fighters)[i]].img);
+        var fighterCard = $("<div>");
+        fighterCard.attr("class", "fighterCard");
+        var fighterImg = $("<img>");
+        fighterImg.attr("src", fighters[Object.keys(fighters)[i]].img);
+        fighterCard.append(fighterImg);
 
         // fighterCard.append(fighters[Object.keys(fighters)[i]].img);
         $(".fighterOptions").append(fighterCard);
