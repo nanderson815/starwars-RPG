@@ -31,7 +31,7 @@ $(document).ready(function () {
         }
     }
 
-
+    // Stores an Array of fighter Names, so the .length can be used in a for loop.
     var theFighters = Object.keys(fighters);
     console.log(theFighters);
 
