@@ -35,8 +35,9 @@ $(document).ready(function () {
     var clickedEnemyCard = false;
     var fighterCard;
 
-    $("#enemiesText").hide();
-    $("#defenderText").hide();
+
+    $(".yourFighter").hide();
+    $(".enemyCard").hide();
 
     // Stores an Array of fighter Names, so the .length can be used in a for loop.
     var theFighters = Object.keys(fighters);
@@ -56,33 +57,32 @@ $(document).ready(function () {
         $(".fighterOptions").append(fighterCard);
     }
 
-    $(".fighterCard").on("click", function () {
-        i = this.id;
-
-        $("#enemiesText").show();
-
-        $(".fighterCard").each(function () {
-            if (i !== this.id && clickedCard === false) {
-                $(this).detach().appendTo(".enemyFighters");
-                $(this).attr("class", "enemyCard");
-            }
-        });
-        clickedCard = true;
-
-        $(".enemyCard").on("click", function () {
-            j = this.id;
-            $("#defenderText").show();
-
-            $(".enemyCard").each(function () {
-                if (j == this.id && clickedEnemyCard == false) {
-                    $(this).detach().appendTo(".defenderFighter");
-                    $(this).attr("class", "defenderCard");
-                }
-            });
-            clickedEnemyCard = true;
-
-        });
+    // Runs the figher action.
+    $(".fightButton").on("click", function () {
+        console.log();
 
     });
+
+    $(".fighterCard").on("click", function () {
+        if (clickedCard === false) {
+            i = this.id;
+            $(".yourFighter").show();
+            $(".fighterImage").attr("src", fighters[Object.keys(fighters)[i]].img);
+            $(".fighterName").text(fighters[Object.keys(fighters)[i]].name);
+            $(".fighterHP").text(fighters[Object.keys(fighters)[i]].healthPoints);
+            $("#chooseFighter").text("Enemies Available to attack.")
+            clickedCard = true;
+        } else if (clickedCard === true){
+                j = this.id;
+                $(".enemyCard").show();
+                $(".enemyImage").attr("src", fighters[Object.keys(fighters)[j]].img);
+                $(".enemyName").text(fighters[Object.keys(fighters)[j]].name);
+                $(".enemyHP").text(fighters[Object.keys(fighters)[j]].healthPoints);
+                clickedCard = null;
+        } else {}
+        
+    });
+
+ 
 
 });
