@@ -71,6 +71,7 @@ $(document).ready(function () {
             $(".fighterName").text(fighters[Object.keys(fighters)[i]].name);
             $(".fighterHP").text(fighters[Object.keys(fighters)[i]].healthPoints);
             $("#chooseFighter").text("Enemies Available to attack.")
+            $("#" + [i]).hide();
             clickedCard = true;
         } else if (clickedCard === true){
                 j = this.id;
@@ -78,6 +79,7 @@ $(document).ready(function () {
                 $(".enemyImage").attr("src", fighters[Object.keys(fighters)[j]].img);
                 $(".enemyName").text(fighters[Object.keys(fighters)[j]].name);
                 $(".enemyHP").text(fighters[Object.keys(fighters)[j]].healthPoints);
+                $("#" + [j]).hide();
                 clickedCard = null;
         } else {}
         
