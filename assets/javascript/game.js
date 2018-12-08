@@ -45,6 +45,7 @@ $(document).ready(function () {
     var defenderHP;
     var defendPower;
 
+    //  variable that counts remaining enemies.
 
 
     $(".yourFighter").hide();
@@ -52,7 +53,8 @@ $(document).ready(function () {
 
     // Stores an Array of fighter Names, so the .length can be used in a for loop.
     var theFighters = Object.keys(fighters);
-    console.log(theFighters);
+
+    var remainingDefenders = theFighters.length;
 
     for (i = 0; i < theFighters.length; i++) {
         fighterCard = $("<div>");
@@ -104,7 +106,7 @@ $(document).ready(function () {
         if (attackHP <= 0) {
             alert("You lose!");
         }
-        
+
         if (defenderHP > 0 && attackHP > 0) {
             $("#gameDialogue").text("You attacked " + fighters[Object.keys(fighters)[j]].name + " for " + attackPower + " damage!");
             defenderHP = defenderHP - attackPower;
@@ -114,12 +116,17 @@ $(document).ready(function () {
             attackHP = attackHP - defendPower;
             $(".fighterHP").text(attackHP);
             $("#gameDialogue").append("<br>" + "You were attacked for " + defendPower + " damage!");
-        } 
-        
+        }
+
         if (defenderHP <= 0 && attackHP > 0) {
             $("#gameDialogue").text("You defeated " + fighters[Object.keys(fighters)[j]].name + ", pick your next opponent!");
             $(".enemyCard").hide();
+            remainingDefenders--;
             clickedCard = true;
+        }
+
+        if (remainingDefenders == 0) {
+            alert("Game over, you won! Refresh to play again!")
         }
 
     });
