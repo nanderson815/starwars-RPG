@@ -38,10 +38,12 @@ $(document).ready(function () {
     // Var i the players character selection
     var i;
     var attackPower;
+    var attackHP;
 
     // j is the defender selection
     var j;
     var defenderHP;
+    var defendPower;
 
 
 
@@ -79,12 +81,14 @@ $(document).ready(function () {
             $(".yourFighter").show();
             $(".fighterImage").attr("src", fighters[Object.keys(fighters)[i]].img);
             $(".fighterName").text(fighters[Object.keys(fighters)[i]].name);
-            $(".fighterHP").text(fighters[Object.keys(fighters)[i]].healthPoints);
+            attackHP = fighters[Object.keys(fighters)[i]].healthPoints;
+            $(".fighterHP").text(attackHP);
             $("#chooseFighter").text("Enemies Available to attack.")
             $("#" + [i]).hide();
             clickedCard = true;
         } else if (clickedCard === true) {
             j = this.id;
+            defendPower = fighters[Object.keys(fighters)[j]].attackPower;
             $(".enemyCard").show();
             $(".enemyImage").attr("src", fighters[Object.keys(fighters)[j]].img);
             $(".enemyName").text(fighters[Object.keys(fighters)[j]].name);
@@ -97,11 +101,16 @@ $(document).ready(function () {
     });
 
     $(".fightButton").on("click", function () {
-       console.log(attackPower);
+        if (defenderHP > 0) {
+        $("#gameDialogue").text("You attacked for " + attackPower + " damage!");
         defenderHP = defenderHP - attackPower;
         $(".enemyHP").text(defenderHP);
         attackPower = attackPower * 2;
-        
+
+        attackHP = attackHP - defendPower;
+        $(".fighterHP").text(attackHP);
+        $("#gameDialogue").append("You were attacked for " + defendPower + " damage!");
+        }
     });
 
 });
