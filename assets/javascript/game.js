@@ -32,13 +32,16 @@ $(document).ready(function () {
     }
 
     var clickedCard = false;
+    var fighterCard;
+
+    $("#enemiesText").hide();
 
     // Stores an Array of fighter Names, so the .length can be used in a for loop.
     var theFighters = Object.keys(fighters);
     console.log(theFighters);
 
     for (i = 0; i < theFighters.length; i++) {
-        var fighterCard = $("<div>");
+        fighterCard = $("<div>");
         fighterCard.attr({
             class: "fighterCard",
             id: i
@@ -53,6 +56,7 @@ $(document).ready(function () {
 
     $(".fighterCard").on("click", function () {
         i = this.id;
+        $("#enemiesText").show();
         $(".fighterCard").each(function () {
             if (i !== this.id && clickedCard === false) {
                 $(this).detach().appendTo(".enemyFighters");
