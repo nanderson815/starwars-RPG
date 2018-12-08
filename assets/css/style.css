@@ -1,0 +1,17 @@
+.fighterCard{
+    float:left;
+    width: 150px;
+    border: 1px solid #eee;
+    margin: 0px 10px 20px 10px;
+    text-align: center;
+    padding: 5px;
+    box-shadow: 2px 10px 8px #aaa;
+}
+
+.fighterCard:hover{
+    box-shadow: 5px 15px 8px #aaa;
+}
+
+h2{
+    clear: both;
+}

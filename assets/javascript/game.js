@@ -31,21 +31,30 @@ $(document).ready(function () {
         }
     }
 
+    var clickedCard;
+
     // Stores an Array of fighter Names, so the .length can be used in a for loop.
     var theFighters = Object.keys(fighters);
     console.log(theFighters);
 
-    for (i=0; i < theFighters.length; i++){
+    for (i = 0; i < theFighters.length; i++) {
         var fighterCard = $("<div>");
-        fighterCard.attr("class", "fighterCard");
+        fighterCard.attr({
+            class: "fighterCard",
+            id: i
+        });
         var fighterImg = $("<img>");
         fighterImg.attr("src", fighters[Object.keys(fighters)[i]].img);
         fighterCard.append(fighterImg);
-
-        // fighterCard.append(fighters[Object.keys(fighters)[i]].img);
+        fighterCard.append(fighters[Object.keys(fighters)[i]].name + "<br>");
+        fighterCard.append(fighters[Object.keys(fighters)[i]].healthPoints);
         $(".fighterOptions").append(fighterCard);
     }
 
+    $(".fighterCard").on("click", function () {
+        i = this.id;
+        console.log(i);
+    });
 
 
 });
