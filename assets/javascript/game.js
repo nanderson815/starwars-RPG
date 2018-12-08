@@ -31,7 +31,7 @@ $(document).ready(function () {
         }
     }
 
-    var clickedCard;
+    var clickedCard = false;
 
     // Stores an Array of fighter Names, so the .length can be used in a for loop.
     var theFighters = Object.keys(fighters);
@@ -54,8 +54,11 @@ $(document).ready(function () {
     $(".fighterCard").on("click", function () {
         i = this.id;
         $(".fighterCard").each(function () {
-            alert(this.id);
+            if (i !== this.id && clickedCard === false) {
+                $(this).detach().appendTo(".enemyFighters");
+            }
         });
+        clickedCard = true;
     });
 
 
