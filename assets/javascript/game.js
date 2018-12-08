@@ -53,7 +53,9 @@ $(document).ready(function () {
 
     $(".fighterCard").on("click", function () {
         i = this.id;
-        console.log(i);
+        $(".fighterCard").each(function () {
+            alert(this.id);
+        });
     });
 
 
