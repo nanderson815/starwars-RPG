@@ -32,9 +32,11 @@ $(document).ready(function () {
     }
 
     var clickedCard = false;
+    var clickedEnemyCard = false;
     var fighterCard;
 
     $("#enemiesText").hide();
+    $("#defenderText").hide();
 
     // Stores an Array of fighter Names, so the .length can be used in a for loop.
     var theFighters = Object.keys(fighters);
@@ -56,7 +58,9 @@ $(document).ready(function () {
 
     $(".fighterCard").on("click", function () {
         i = this.id;
+
         $("#enemiesText").show();
+
         $(".fighterCard").each(function () {
             if (i !== this.id && clickedCard === false) {
                 $(this).detach().appendTo(".enemyFighters");
@@ -64,7 +68,21 @@ $(document).ready(function () {
             }
         });
         clickedCard = true;
-    });
 
+        $(".enemyCard").on("click", function () {
+            j = this.id;
+            $("#defenderText").show();
+
+            $(".enemyCard").each(function () {
+                if (j == this.id && clickedEnemyCard == false) {
+                    $(this).detach().appendTo(".defenderFighter");
+                    $(this).attr("class", "defenderCard");
+                }
+            });
+            clickedEnemyCard = true;
+
+        });
+
+    });
 
 });

@@ -19,6 +19,17 @@
     box-shadow: 2px 10px 8px #aaa;
 }
 
+.defenderCard{
+    float:left;
+    width: 150px;
+    border: 1px solid #eee;
+    margin: 0px 10px 20px 10px;
+    text-align: center;
+    padding: 5px;
+    background: rgba(229, 49, 25, 0.5);
+    box-shadow: 2px 10px 8px #aaa;
+}
+
 .fighterCard:hover, .enemyCard:hover{
     box-shadow: 5px 15px 8px #aaa;
 }
