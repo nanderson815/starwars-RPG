@@ -37,10 +37,12 @@ $(document).ready(function () {
 
     // Var i the players character selection
     var i;
+    var attackPower;
 
     // j is the defender selection
     var j;
-    
+    var defenderHP;
+
 
 
     $(".yourFighter").hide();
@@ -73,6 +75,7 @@ $(document).ready(function () {
     $(".fighterCard").on("click", function () {
         if (clickedCard === false) {
             i = this.id;
+            attackPower = fighters[Object.keys(fighters)[i]].attackPower;
             $(".yourFighter").show();
             $(".fighterImage").attr("src", fighters[Object.keys(fighters)[i]].img);
             $(".fighterName").text(fighters[Object.keys(fighters)[i]].name);
@@ -80,22 +83,25 @@ $(document).ready(function () {
             $("#chooseFighter").text("Enemies Available to attack.")
             $("#" + [i]).hide();
             clickedCard = true;
-        } else if (clickedCard === true){
-                j = this.id;
-                $(".enemyCard").show();
-                $(".enemyImage").attr("src", fighters[Object.keys(fighters)[j]].img);
-                $(".enemyName").text(fighters[Object.keys(fighters)[j]].name);
-                $(".enemyHP").text(fighters[Object.keys(fighters)[j]].healthPoints);
-                $("#" + [j]).hide();
-                clickedCard = null;
-        } else {}
-        
+        } else if (clickedCard === true) {
+            j = this.id;
+            $(".enemyCard").show();
+            $(".enemyImage").attr("src", fighters[Object.keys(fighters)[j]].img);
+            $(".enemyName").text(fighters[Object.keys(fighters)[j]].name);
+            defenderHP = fighters[Object.keys(fighters)[j]].healthPoints;
+            $(".enemyHP").text(defenderHP);
+            $("#" + [j]).hide();
+            clickedCard = null;
+        } else { }
+
     });
 
     $(".fightButton").on("click", function () {
-        var defenderHP = $(".enemyHP");
-        var remainingHP = defenderHP - fighters[Object.keys(fighters)[i]].attackPower;
-        $(".enemyHP").text(remainingHP);
+       console.log(attackPower);
+        defenderHP = defenderHP - attackPower;
+        $(".enemyHP").text(defenderHP);
+        attackPower = attackPower * 2;
+        
     });
 
 });
