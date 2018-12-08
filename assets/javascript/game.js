@@ -35,6 +35,13 @@ $(document).ready(function () {
     var clickedEnemyCard = false;
     var fighterCard;
 
+    // Var i the players character selection
+    var i;
+
+    // j is the defender selection
+    var j;
+    
+
 
     $(".yourFighter").hide();
     $(".enemyCard").hide();
@@ -85,6 +92,10 @@ $(document).ready(function () {
         
     });
 
- 
+    $(".fightButton").on("click", function () {
+        var defenderHP = $(".enemyHP");
+        var remainingHP = defenderHP - fighters[Object.keys(fighters)[i]].attackPower;
+        $(".enemyHP").text(remainingHP);
+    });
 
 });
