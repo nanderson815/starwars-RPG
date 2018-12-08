@@ -5,15 +5,15 @@ $(document).ready(function () {
             name: "Boba Fett",
             img: "assets/images/bulba-fet-icon.png",
             healthPoints: "150",
-            attackPower: "11",
-            counterAttackPower: "12"
+            attackPower: "8",
+            counterAttackPower: "22"
         },
         Darth: {
             name: "Darth Vader",
             img: "assets/images/Darth-Vader-icon.png",
             healthPoints: "200",
-            attackPower: "12",
-            counterAttackPower: "15"
+            attackPower: "9",
+            counterAttackPower: "25"
         },
         R2D2: {
             name: "R2-D2",
@@ -26,8 +26,8 @@ $(document).ready(function () {
             name: "Clone Soldier",
             img: "assets/images/clone-icon.png",
             healthPoints: "150",
-            attackPower: "15",
-            counterAttackPower: "13"
+            attackPower: "7",
+            counterAttackPower: "19"
         }
     }
 
@@ -88,7 +88,7 @@ $(document).ready(function () {
             clickedCard = true;
         } else if (clickedCard === true) {
             j = this.id;
-            defendPower = fighters[Object.keys(fighters)[j]].attackPower;
+            defendPower = fighters[Object.keys(fighters)[j]].counterAttackPower;
             $(".enemyCard").show();
             $(".enemyImage").attr("src", fighters[Object.keys(fighters)[j]].img);
             $(".enemyName").text(fighters[Object.keys(fighters)[j]].name);
@@ -101,16 +101,27 @@ $(document).ready(function () {
     });
 
     $(".fightButton").on("click", function () {
-        if (defenderHP > 0) {
-        $("#gameDialogue").text("You attacked for " + attackPower + " damage!");
-        defenderHP = defenderHP - attackPower;
-        $(".enemyHP").text(defenderHP);
-        attackPower = attackPower * 2;
-
-        attackHP = attackHP - defendPower;
-        $(".fighterHP").text(attackHP);
-        $("#gameDialogue").append("You were attacked for " + defendPower + " damage!");
+        if (attackHP <= 0) {
+            alert("You lose!");
         }
+        
+        if (defenderHP > 0 && attackHP > 0) {
+            $("#gameDialogue").text("You attacked " + fighters[Object.keys(fighters)[j]].name + " for " + attackPower + " damage!");
+            defenderHP = defenderHP - attackPower;
+            $(".enemyHP").text(defenderHP);
+            attackPower = attackPower * 2;
+
+            attackHP = attackHP - defendPower;
+            $(".fighterHP").text(attackHP);
+            $("#gameDialogue").append("<br>" + "You were attacked for " + defendPower + " damage!");
+        } 
+        
+        if (defenderHP <= 0 && attackHP > 0) {
+            $("#gameDialogue").text("You defeated " + fighters[Object.keys(fighters)[j]].name + ", pick your next opponent!");
+            $(".enemyCard").hide();
+            clickedCard = true;
+        }
+
     });
 
 });
