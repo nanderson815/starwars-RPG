@@ -56,6 +56,7 @@ $(document).ready(function () {
         $(".fighterCard").each(function () {
             if (i !== this.id && clickedCard === false) {
                 $(this).detach().appendTo(".enemyFighters");
+                $(this).attr("class", "enemyCard");
             }
         });
         clickedCard = true;
