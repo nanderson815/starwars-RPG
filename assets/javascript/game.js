@@ -7,7 +7,7 @@ $(document).ready(function () {
             img: "assets/images/bulba-fet-icon.png",
             healthPoints: "150",
             attackPower: "3",
-            counterAttackPower: "35"
+            counterAttackPower: "40"
         },
         Darth: {
             name: "Darth Vader",
@@ -21,14 +21,14 @@ $(document).ready(function () {
             img: "assets/images/R2-D2-icon.png",
             healthPoints: "125",
             attackPower: "6",
-            counterAttackPower: "26"
+            counterAttackPower: "29"
         },
         Clone: {
             name: "Clone Soldier",
             img: "assets/images/clone-icon.png",
             healthPoints: "150",
             attackPower: "4",
-            counterAttackPower: "35"
+            counterAttackPower: "30"
         }
     }
 
@@ -52,6 +52,7 @@ $(document).ready(function () {
     // Hides the selected character and enemy character cards until they are specified by the user.
     $(".yourFighter").hide();
     $(".enemyCard").hide();
+    $(".reloadButton").hide();
 
     // Stores an Array of fighter Names, so the .length can be used in a for loop.
     var theFighters = Object.keys(fighters);
@@ -152,17 +153,25 @@ $(document).ready(function () {
             if (remainingDefenders == 1) {
                 $("#gameDialogue").html(" <h1> Game over, you won! Refresh to play again! </h1>");
                 $(".fightButton").hide();
+                $("#chooseFighter").hide();
+                $("#defenderText").hide();
             }
 
 
         }
 
         if (attackHP <= 0) {
-            alert("You lose!");
+            $("#gameDialogue").html(" <h1> You lose, press the button to try again! </h1>");
+            $(".reloadButton").show();
+            $(".fightButton").hide();
+            $("#chooseFighter").hide();
+            $("#defenderText").hide();
         }
 
 
 
     });
-
+    $(".reloadButton").on("click", function () {
+        location.reload();
+    });
 });
