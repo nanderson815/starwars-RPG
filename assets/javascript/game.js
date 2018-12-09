@@ -5,29 +5,29 @@ $(document).ready(function () {
             name: "Boba Fett",
             img: "assets/images/bulba-fet-icon.png",
             healthPoints: "150",
-            attackPower: "8",
-            counterAttackPower: "22"
+            attackPower: "3",
+            counterAttackPower: "35"
         },
         Darth: {
             name: "Darth Vader",
             img: "assets/images/Darth-Vader-icon.png",
             healthPoints: "180",
-            attackPower: "9",
-            counterAttackPower: "25"
+            attackPower: "2",
+            counterAttackPower: "42"
         },
         R2D2: {
             name: "R2-D2",
             img: "assets/images/R2-D2-icon.png",
             healthPoints: "125",
-            attackPower: "10",
-            counterAttackPower: "20"
+            attackPower: "6",
+            counterAttackPower: "26"
         },
         Clone: {
             name: "Clone Soldier",
             img: "assets/images/clone-icon.png",
             healthPoints: "150",
-            attackPower: "7",
-            counterAttackPower: "28"
+            attackPower: "4",
+            counterAttackPower: "35"
         }
     }
 
@@ -111,9 +111,11 @@ $(document).ready(function () {
             $(".enemyHP").text(defenderHP);
             attackPower = attackPower * 2;
 
+            if (defenderHP > 0) {
             attackHP = attackHP - defendPower;
             $(".fighterHP").text(attackHP);
             $("#gameDialogue").append("<br>" + "You were attacked for " + defendPower + " damage!");
+            }
         }
 
         if (defenderHP <= 0 && attackHP > 0) {
