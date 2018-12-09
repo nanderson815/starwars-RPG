@@ -8,45 +8,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/game.js"></script>
 
 </head>
 
 <body>
-    <header>
-        <h1>Star Wars RPG!</h1>
-    </header>
+
 
     <div class="container">
+        <header>
+            <h1>Star Wars RPG!</h1>
+        </header>
+        <div class="activeCards">
+            <div>
+                <div class="yourFighter">
+                    <img class="fighterImage">
+                    <h4 class="fighterName"></h4>
+                    <p class="fighterHP"></p>
+                </div>
 
-        <div class="yourFighter">
-            <img class="fighterImage">
-            <h4 class="fighterName"></h4>
-            <p class="fighterHP"></p>
+                <h2 id="characterText">Your Character</h2>
+            </div>
+
+            <div>
+                <div class="enemyCard">
+                    <img class="enemyImage">
+                    <h4 class="enemyName"></h4>
+                    <p class="enemyHP"></p>
+                </div>
+                <h2 id="defenderText">Defender</h2>
+            </div>
         </div>
-
-        <h2 id="characterText">Your Character</h2>
-
         <div class="fighterOptions">
 
         </div>
 
         <h2 id="chooseFighter">Choose your fighter!</h2>
 
-
-
-        
-        <div class="enemyCard">
-            <img class="enemyImage">
-            <h4 class="enemyName"></h4>
-            <p class="enemyHP"></p>
+        <div class="buttonDiv">
+            <button class="fightButton btn btn-1 btn-1e">Fight!</button>
+            <button class="reloadButton btn btn-1 btn-1e">Try again!</button>
         </div>
-        <h2 id="defenderText">Defender</h2>
-
-        <button class="fightButton">Fight!</button>
-        <button class="reloadButton">Try again!</button>
-
 
         <p id="gameDialogue"></p>
     </div>

@@ -53,6 +53,9 @@ $(document).ready(function () {
     $(".yourFighter").hide();
     $(".enemyCard").hide();
     $(".reloadButton").hide();
+    $(".fightButton").hide();
+    $('#characterText').hide();
+    $("#defenderText").hide();
 
     // Stores an Array of fighter Names, so the .length can be used in a for loop.
     var theFighters = Object.keys(fighters);
@@ -74,9 +77,9 @@ $(document).ready(function () {
         fighterImg.attr("src", fighters[Object.keys(fighters)[i]].img);
         fighterCard.append(fighterImg);
         // Appends the fighter name
-        fighterCard.append(fighters[Object.keys(fighters)[i]].name + "<br>");
+        fighterCard.append("<h4>" + fighters[Object.keys(fighters)[i]].name + " </h4>");
         // appends the fighteres HP
-        fighterCard.append(fighters[Object.keys(fighters)[i]].healthPoints);
+        fighterCard.append("HP: " + fighters[Object.keys(fighters)[i]].healthPoints);
         $(".fighterOptions").append(fighterCard);
     }
 
@@ -90,6 +93,7 @@ $(document).ready(function () {
             attackPower = fighters[Object.keys(fighters)[i]].attackPower;
             // Shows the div that holds the selected fighter, which is hidden on load.
             $(".yourFighter").show();
+            $('#characterText').show();
             // Grabs the fighter image from the array, adds to the DOM by adding Img SRC.
             $(".fighterImage").attr("src", fighters[Object.keys(fighters)[i]].img);
             // Adds fighter name to the DOM.
@@ -112,6 +116,7 @@ $(document).ready(function () {
             defendPower = fighters[Object.keys(fighters)[j]].counterAttackPower;
             // Shows the enemy card, which is hidden on load.
             $(".enemyCard").show();
+            $("#defenderText").show();
             // Grabs the enemy image by changing the SRC of the img on the DOM.
             $(".enemyImage").attr("src", fighters[Object.keys(fighters)[j]].img);
             // Prints the enemy name to the DOM.
@@ -121,6 +126,8 @@ $(document).ready(function () {
             $(".enemyHP").text(defenderHP);
             // Hides clicked card, so that user can only selecy each enemy once.
             $("#" + [j]).hide();
+            // Shows the fight button once both characters are selected.
+            $(".fightButton").show();
             // Changes value of clicked card to null, so that clicking fighterCard will do nothing. 
             clickedCard = null;
         } else { }
