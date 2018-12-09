@@ -112,9 +112,9 @@ $(document).ready(function () {
             attackPower = attackPower * 2;
 
             if (defenderHP > 0) {
-            attackHP = attackHP - defendPower;
-            $(".fighterHP").text(attackHP);
-            $("#gameDialogue").append("<br>" + "You were attacked for " + defendPower + " damage!");
+                attackHP = attackHP - defendPower;
+                $(".fighterHP").text(attackHP);
+                $("#gameDialogue").append("<br>" + "You were attacked for " + defendPower + " damage!");
             }
         }
 
@@ -122,16 +122,22 @@ $(document).ready(function () {
             $("#gameDialogue").text("You defeated " + fighters[Object.keys(fighters)[j]].name + ", pick your next opponent!");
             $(".enemyCard").hide();
             remainingDefenders--;
+            console.log(remainingDefenders);
             clickedCard = true;
+
+            if (remainingDefenders == 1) {
+                $("#gameDialogue").html(" <h1> Game over, you won! Refresh to play again! </h1>");
+                $(".fightButton").hide();
+            }
+
+
         }
 
         if (attackHP <= 0) {
             alert("You lose!");
         }
 
-        if (remainingDefenders == 0) {
-            alert("Game over, you won! Refresh to play again!")
-        }
+
 
     });
 
