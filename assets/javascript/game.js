@@ -11,7 +11,7 @@ $(document).ready(function () {
         Darth: {
             name: "Darth Vader",
             img: "assets/images/Darth-Vader-icon.png",
-            healthPoints: "200",
+            healthPoints: "180",
             attackPower: "9",
             counterAttackPower: "25"
         },
@@ -20,14 +20,14 @@ $(document).ready(function () {
             img: "assets/images/R2-D2-icon.png",
             healthPoints: "125",
             attackPower: "10",
-            counterAttackPower: "17"
+            counterAttackPower: "20"
         },
         Clone: {
             name: "Clone Soldier",
             img: "assets/images/clone-icon.png",
             healthPoints: "150",
             attackPower: "7",
-            counterAttackPower: "19"
+            counterAttackPower: "28"
         }
     }
 
@@ -103,9 +103,7 @@ $(document).ready(function () {
     });
 
     $(".fightButton").on("click", function () {
-        if (attackHP <= 0) {
-            alert("You lose!");
-        }
+
 
         if (defenderHP > 0 && attackHP > 0) {
             $("#gameDialogue").text("You attacked " + fighters[Object.keys(fighters)[j]].name + " for " + attackPower + " damage!");
@@ -123,6 +121,10 @@ $(document).ready(function () {
             $(".enemyCard").hide();
             remainingDefenders--;
             clickedCard = true;
+        }
+
+        if (attackHP <= 0) {
+            alert("You lose!");
         }
 
         if (remainingDefenders == 0) {
