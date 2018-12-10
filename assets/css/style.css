@@ -1,5 +1,6 @@
 
 body {
+    /* Sets the background image and sets it to fill the entire screen. */
     background: url(../images/star-wars-background.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -36,7 +37,7 @@ h1{
     background: white;
     border: 1px solid #eee;
     border-radius: 8px;
-    margin: 0px 10px 20px 10px;
+    margin: 0px 10px 0px 10px;
     text-align: center;
     padding: 5px;
     box-shadow: 2px 10px 8px #aaa;
@@ -46,7 +47,7 @@ h1{
     width: 150px;
     border: 1px solid red;
     border-radius: 8px;
-    margin: 0px 10px 20px 10px;
+    margin: 0px 10px 0px 10px;
     text-align: center;
     padding: 5px;
     background: rgba(225, 58, 58, 0.7);
@@ -62,7 +63,7 @@ h1{
 }
 
 h2{
-    clear: both;
+    margin: 0px 0px 10px 10px;
 }
 
 h4 {
@@ -78,6 +79,7 @@ p {
     justify-content: center;
 }
 
+/* Sweet button I found on the internet. */
 
 .btn {
 	border: none;

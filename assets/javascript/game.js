@@ -153,6 +153,8 @@ $(document).ready(function () {
         if (defenderHP <= 0 && attackHP > 0) {
             $("#gameDialogue").text("You defeated " + fighters[Object.keys(fighters)[j]].name + ", pick your next opponent!");
             $(".enemyCard").hide();
+            $(".fightButton").hide();
+
             remainingDefenders--;
             console.log(remainingDefenders);
             clickedCard = true;
